@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CalculateSumActivity">
+
+        <EditText
+            android:id="@+id/etNum"
+            android:layout_width="317dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="76dp"
+            android:ems="10"
+            android:textSize="20sp"
+            android:inputType="number"
+            android:hint="Number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:textSize="20dp"
+            android:text="ADD"
+            app:layout_constraintEnd_toEndOf="@+id/etNum"
+            app:layout_constraintStart_toStartOf="@+id/etNum"
+            app:layout_constraintTop_toBottomOf="@+id/etNum" />
+
+        <TextView
+            android:id="@+id/tvSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:textSize="20sp"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@+id/btnAdd"
+            app:layout_constraintStart_toStartOf="@+id/btnAdd"
+            app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

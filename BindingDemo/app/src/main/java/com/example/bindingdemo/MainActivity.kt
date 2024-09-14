@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        binding.student = getStudent()
 
         binding.btnStart.setOnClickListener {
             stopOrStartProgressBar()
@@ -28,6 +29,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnSubmit.setOnClickListener {
             displayGreetings()
         }
+//
+//        var student : Student = getStudent()
+//        binding.tvName.text = student.name
+//        binding.tvemail.text = student.email
     }
 
     private fun displayGreetings(){
@@ -50,5 +55,9 @@ class MainActivity : AppCompatActivity() {
                 btnStart.text = "START"
             }
         }
+    }
+
+    private fun getStudent() : Student {
+        return Student(1,"Filiz","h.filiz@gmail.com")
     }
 }
