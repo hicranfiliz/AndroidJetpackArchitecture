@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.viewmodeldemo.databinding.ActivityCalculateSumBinding
 
@@ -21,12 +22,16 @@ class CalculateSumActivity : AppCompatActivity() {
         viewModelFactory = CalculateActivityViewModelFactory(85)
         viewModel = ViewModelProvider(this, viewModelFactory).get(CalculateActivityViewModel::class.java)
 
-        binding.tvSum.text = viewModel.getSum().toString()
+        viewModel.sumData.observe(this, Observer {
+            binding.tvSum.text =it.toString()
+        })
+
+        //binding.tvSum.text = viewModel.getSum().toString()
         binding.btnAdd.setOnClickListener {
             var number = binding.etNum.text.toString().toInt()
             if (number != 0) {
                 viewModel.updateSum(number)
-                binding.tvSum.text = viewModel.getSum().toString()
+                //binding.tvSum.text = viewModel.getSum().toString()
             } else{
                 binding.tvSum.text = "Please enter greater than 0"
             }
