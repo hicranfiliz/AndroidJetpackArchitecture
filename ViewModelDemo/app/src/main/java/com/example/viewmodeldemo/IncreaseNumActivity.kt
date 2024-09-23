@@ -18,14 +18,10 @@ class IncreaseNumActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_increase_num)
         viewModel = ViewModelProvider(this).get(IncreaseNumViewModel::class.java)
+        binding.myviewModel = viewModel
 
         viewModel.numberValue.observe(this) {
             binding.tvIncreasedNm.text = it.toString()
-        }
-
-        binding.btnClick.setOnClickListener {
-           // binding.tvIncreasedNm.text = viewModel.increaseNum().toString()
-            viewModel.increaseNum()
         }
     }
 }

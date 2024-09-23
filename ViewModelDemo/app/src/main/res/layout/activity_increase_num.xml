@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        
+        <variable
+            name="myviewModel"
+            type="com.example.viewmodeldemo.IncreaseNumViewModel" />
 
     </data>
 
@@ -32,6 +36,7 @@
             android:layout_marginTop="56dp"
             android:text="CLICK HERE"
             android:textSize="24sp"
+            android:onClick="@{() -> myviewModel.increaseNum()}"
             app:layout_constraintEnd_toEndOf="@+id/tvIncreasedNm"
             app:layout_constraintStart_toStartOf="@+id/tvIncreasedNm"
             app:layout_constraintTop_toBottomOf="@+id/tvIncreasedNm" />
