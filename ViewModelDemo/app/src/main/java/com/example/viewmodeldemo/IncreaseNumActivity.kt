@@ -18,10 +18,18 @@ class IncreaseNumActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_increase_num)
         viewModel = ViewModelProvider(this).get(IncreaseNumViewModel::class.java)
+        // bunu tanimlarsak altta viewmodelı observe etmeye gerek yok.
+        binding.lifecycleOwner = this
         binding.myviewModel = viewModel
 
-        viewModel.numberValue.observe(this) {
-            binding.tvIncreasedNm.text = it.toString()
-        }
+//        viewModel.numberValue.observe(this) {
+//            binding.tvIncreasedNm.text = it.toString()
+//        }
+
+        // databinding ile xmle onclick fonk tanimladigimiz icin buraya gerek yok
+//        binding.btnClick.setOnClickListener {
+//           // binding.tvIncreasedNm.text = viewModel.increaseNum().toString()
+//            viewModel.increaseNum()
+//        }
     }
 }
