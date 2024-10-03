@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_demo"
+    app:startDestination="@id/SHomeFragment">
+
+    <fragment
+        android:id="@+id/nameFragment"
+        android:name="com.example.navigationarchitecture.NameFragment"
+        android:label="fragment_name"
+        tools:layout="@layout/fragment_name" >
+        <action
+            android:id="@+id/action_nameFragment_to_SEmailFragment"
+            app:destination="@id/SEmailFragment"
+            app:enterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/SEmailFragment"
+        android:name="com.example.navigationarchitecture.SEmailFragment"
+        android:label="fragment_s_email"
+        tools:layout="@layout/fragment_s_email" >
+        <action
+            android:id="@+id/action_SEmailFragment_to_SWelcomeFragment"
+            app:destination="@id/SWelcomeFragment"
+            app:enterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/STermsFragment"
+        android:name="com.example.navigationarchitecture.STermsFragment"
+        android:label="fragment_s_terms"
+        tools:layout="@layout/fragment_s_terms" />
+    <fragment
+        android:id="@+id/SWelcomeFragment"
+        android:name="com.example.navigationarchitecture.SWelcomeFragment"
+        android:label="fragment_s_welcome"
+        tools:layout="@layout/fragment_s_welcome" >
+        <action
+            android:id="@+id/action_SWelcomeFragment_to_STermsFragment"
+            app:destination="@id/STermsFragment"
+            app:enterAnim="@anim/push_down_in"/>
+    </fragment>
+    <fragment
+        android:id="@+id/SHomeFragment"
+        android:name="com.example.navigationarchitecture.SHomeFragment"
+        android:label="fragment_s_home"
+        tools:layout="@layout/fragment_s_home" >
+        <action
+            android:id="@+id/action_SHomeFragment_to_nameFragment"
+            app:destination="@id/nameFragment"
+            app:enterAnim="@anim/slide_in_left"/>
+        <action
+            android:id="@+id/action_SHomeFragment_to_STermsFragment"
+            app:destination="@id/STermsFragment"
+            app:enterAnim="@anim/push_down_in"
+            app:popEnterAnim="@anim/push_up_in"/>
+    </fragment>
+</navigation>
