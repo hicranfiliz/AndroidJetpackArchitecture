@@ -47,6 +47,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     // switch the thread of a coroutine.
+    // coroutine arka planda baslatilir ve ui guncellenmesi gerektigi icin main thread2 tasinir..
+
+    //suspended fonksiyonlari thread blocklairndan kacinmak icn ve daha iyi bir kullanici deneyimi icin kullaniriz.
     private suspend fun downloadUserData() {
         for (i in 1..200000){
             withContext(Dispatchers.Main){
