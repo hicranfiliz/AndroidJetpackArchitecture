@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     private var count = 0
@@ -32,22 +33,26 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnDownloadUserData).setOnClickListener {
 
             CoroutineScope(Dispatchers.IO).launch {
-                //downloadUserData()
-                Log.i("Launch", "Running in ${Thread.currentThread().name}")
+                downloadUserData()
+                //Log.i("Launch", "Running in ${Thread.currentThread().name}")
             }
 
-            CoroutineScope(Dispatchers.Main).launch {
-                //downloadUserData()
-                Log.i("Launch", "Running in ${Thread.currentThread().name}")
-            }
+//            CoroutineScope(Dispatchers.Main).launch {
+//                //downloadUserData()
+//                Log.i("Launch", "Running in ${Thread.currentThread().name}")
+//            }
 
 
         }
     }
 
-    private fun downloadUserData() {
+    // switch the thread of a coroutine.
+    private suspend fun downloadUserData() {
         for (i in 1..200000){
-            Log.i("MyTag", "Downloading user $i in ${Thread.currentThread().name}")
+            withContext(Dispatchers.Main){
+                findViewById<TextView>(R.id.tvUserMessage).text = "Dowloading user $i in ${Thread.currentThread().name}"
+            }
+            //Log.i("MyTag", "Downloading user $i in ${Thread.currentThread().name}")
         }
     }
 }
