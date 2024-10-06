@@ -17,6 +17,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     private var count = 0
@@ -51,8 +52,9 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnDownloadUserData).setOnClickListener {
 
-            CoroutineScope(Dispatchers.IO).launch {
-                downloadUserData()
+            CoroutineScope(Dispatchers.Main).launch {
+                findViewById<TextView>(R.id.tvUserMessage).text = UserDataManager1().getTotalUserCount().toString()
+                //downloadUserData()
                 //Log.i("Launch", "Running in ${Thread.currentThread().name}")
             }
 
