@@ -1,5 +1,6 @@
 package com.example.roomdemo.db
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -10,22 +11,23 @@ import androidx.room.RoomDatabase
 abstract class SubscriberDatabase: RoomDatabase() {
     abstract val subscriberDAO : SubscriberDAO
 
-    companion object{
+    companion object {
         @Volatile
-        private var INSTANCE : SubscriberDatabase? = null
-            fun getInstance(context: Context) : SubscriberDatabase? {
-                synchronized(this){
-                    var instance  = INSTANCE
-                        if (instance == null){
-                            databaseBuilder(
-                                context = context.applicationContext,
-                                klass = SubscriberDatabase::class.java,
-                                name = "subscriber_data_database"
-                            ).build()
-                            INSTANCE = instance
-                        }
-                    return instance
+        private var INSTANCE: SubscriberDatabase? = null
+
+        fun getInstance(context: Context): SubscriberDatabase {
+            synchronized(this) {
+                var instance = INSTANCE
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        SubscriberDatabase::class.java,
+                        "subscriber_data_database"
+                    ).build()
+                    INSTANCE = instance
                 }
+                return instance
             }
+        }
     }
 }
