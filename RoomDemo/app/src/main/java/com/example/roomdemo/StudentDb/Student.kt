@@ -13,6 +13,9 @@ data class Student (
     @ColumnInfo(name = "student_name")
     val name : String,
 
-    @ColumnInfo(name = "student_mail", defaultValue = "No Email")
-    var email : String
+//    @ColumnInfo(name = "student_mail", defaultValue = "No Email")
+//    var email : String,
+
+    @ColumnInfo(name = "subject_name")
+    var courseName : String?
 )

@@ -28,15 +28,17 @@ class RoomMigrationsActivity : AppCompatActivity() {
         }
 
         val nameEditText = binding.etName
-        val mailEditText = binding.etMail
+        //val mailEditText = binding.etMail
+        val courseNameEditText = binding.etCourseName
         val buttonSubmit = binding.btnSubmit
 
         buttonSubmit.setOnClickListener{
             lifecycleScope.launch {
                 nameEditText.text.let {
-                    dao.insertStudent(Student(0, it.toString(), mailEditText.text.toString()))
+                    dao.insertStudent(Student(0, it.toString(),courseNameEditText.text.toString()))
                     nameEditText.setText("")
-                    mailEditText.setText("")
+                    //mailEditText.setText("")
+                    courseNameEditText.setText("")
                 }
             }
         }
